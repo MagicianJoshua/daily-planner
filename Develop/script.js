@@ -9,6 +9,7 @@ $(function () {
   timeChecker();
   saveButton();
   setTextAreaValue();
+  resetButton();
   currentDateElement.textContent = "Date: " + date;
 });
 
@@ -113,4 +114,28 @@ function setTextAreaValue() {
       allDivs[i].value = ""
     }
   }
+}
+
+function resetButton() {
+  let allDivs = document.querySelectorAll(".description");
+
+  let parentDiv = document.createElement("div");
+  parentDiv.classList.add("reset-button-div");
+
+  let resetBtn = document.createElement("button");
+  resetBtn.classList.add("reset-button");
+  resetBtn.textContent = "Reset list";
+
+  let hour = 9;
+  resetBtn.addEventListener("click",function(event){
+
+    for (i = 0; i < allDivs.length; i++){
+      allDivs[i].value = "";
+      localStorage.setItem("hour-"+hour,"")
+      hour++;
+    }
+  })
+  parentDiv.appendChild(resetBtn);
+  document.body.appendChild(parentDiv);
+
 }

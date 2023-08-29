@@ -61,3 +61,18 @@ textarea {
 .currentDate{
   margin-top: 35px;
 }
+
+.reset-button {
+  color:white;
+  width: 150px;
+  height: 50px;
+  border-radius: 15px;
+  background-color: blue;
+
+}
+
+.reset-button-div {
+  display: flex;
+  justify-content: center;
+  margin:50px;
+}
