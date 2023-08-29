@@ -1,14 +1,15 @@
 
 var startingHour = 9;
-var currentDateTxt = document.querySelector(".currentDate");
+var currentDateElement = document.querySelector(".currentDate");
 var date = dayjs().format("MMM-DD-YYYY");
+localStorage.setItem("local-date",date);
 
 $(function () {
   createDailyPlanner();
   timeChecker();
   saveButton();
   setTextAreaValue();
-  currentDateTxt.textContent = "Date: " + date;
+  currentDateElement.textContent = "Date: " + date;
 });
 
 //this function is just creating the template for the daily planner.
@@ -104,5 +105,12 @@ function setTextAreaValue() {
     let currentHour = localStorage.getItem("hour-"+hour);
     allDivs[i].value = currentHour;
     hour++;
+  }
+
+  //This little if statement resets the text area values when the day changes.
+  if (date != localStorage.getItem("local-date")){
+    for (i = 0; i < allDivs.length; i++){
+      allDivs[i].value = ""
+    }
   }
 }
